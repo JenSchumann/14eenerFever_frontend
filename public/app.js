@@ -16,6 +16,86 @@ app.controller('mtnController', ['$http', '$scope', function($http, $scope) {
   this.displayReg = false;
   this.displayLog = false;
 
+  //////////////////////////////////////////////////////////////////////////
+
+  //user section
+
+  //////////////////////////////////////////////////////////////////////////
+
+this.login = function(userPass) {
+  $http({
+    method: 'POST',
+    url: this.url + '/users/login',
+    data: { user: { username: userPass.username, password: userPass.password }},
+  }).then(function(response) {
+    console.log(response);
+    this.user = response.data.user;
+    localStorage.setItem('token', JSON.stringify(response.data.token));
+    if(this.user === undefined){
+      this.loggedIn = false;
+    } else {
+      this.loggedIn = true;
+    }
+    console.log('user logged in? ', this.loggedIn);
+    console.log('user is: ', this.user);
+    this.userId = response.data.user.id;
+    console.log(this.userId);
+
+  }.bind(this));
+};
+
+
+//register new user
+this.createUser = function(userPass){
+    $http({
+      url: this.url + '/users',
+      method: 'post',
+      data: {user: {username: userPass.username, password: userPass.password}}
+    }).then(function(response){
+      console.log(response);
+      this.user = response.data.user;
+      this.loggedIn = true;
+    }.bind(this))
+};
+
+//see index of all logged in users - for admin functionality
+this.getUsers = function() {
+  $http({
+    url: this.url + '/users',
+    method: 'GET',
+    headers: {
+        Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      if (response.data.status == 401) {
+      this.error = "Unauthorized";
+    } else {
+      this.users = response.data;
+    }
+  }.bind(this));
+}
+
+//logout
+this.logout = function() {
+  localStorage.clear('token');
+  location.reload();
+}
+
+
+
+
+
+
+
+  //////////////////////////////////////////////////////////////////////////
+
+    //modal section
+
+  //////////////////////////////////////////////////////////////////////////
+
+    $scope.toggleAboutModal = function() {
+        $scope.modalShown1 = !$scope.modalShown1;
+      };
 
 
 
