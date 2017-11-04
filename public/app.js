@@ -2,10 +2,10 @@ console.log('14eener Fever is hiking it');
 
 const app = angular.module('mtnfever', []);
 
+
 //main controller
 app.controller('mtnController', ['$http', '$scope', function($http, $scope) {
   $scope.modalShown1 = false;
-
   const controller = this;
   this.message = "this mtnController works";
   this.url = 'http://localhost:3000';
@@ -16,11 +16,12 @@ app.controller('mtnController', ['$http', '$scope', function($http, $scope) {
   this.displayReg = false;
   this.displayLog = false;
 
-  //////////////////////////////////////////////////////////////////////////
 
-  //user section
+//////////////////////////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////////////////////////////
+//user section
+
+//////////////////////////////////////////////////////////////////////////
 
 this.login = function(userPass) {
   $http({
@@ -39,7 +40,7 @@ this.login = function(userPass) {
     console.log('user logged in? ', this.loggedIn);
     console.log('user is: ', this.user);
     this.userId = response.data.user.id;
-    console.log(this.userId);
+    console.log("this climber is " + this.userId);
 
   }.bind(this));
 };
@@ -81,21 +82,201 @@ this.logout = function() {
   location.reload();
 }
 
+//////////////////////////////////////////////////////////////////////////
+
+  //climber section
+  // for logged in user to see all the climbers/users
+
+//////////////////////////////////////////////////////////////////////////
+
+this.showClimbers = function(){
+  console.log('showClimbers here');
+        $http({
+          url: this.url + '/climbers',
+          method: 'GET',
+        }).then(function(response) {
+          console.log(response.data);
+          controller.climbersIndex = response.data;
+          console.log("--------------");
+          console.log("this is this.climbersIndex, which is response.data", controller.climbersIndex);
+          console.log("--------------");
+        })
+      }
 
 
+      this.setCurrentClimber = function(id){
+              $http({
+                url: this.url + '/users/' + this.user.id + '/summits/' + id,
+                method: 'GET',
+              }).then(function(response) {
+                console.log(response.data);
+                controller.currentClimber = response.data;
+                console.log("--------------");
+                console.log("this is controller.currentClimber, which is response.data", controller.currentClimber);
+                console.log("--------------");
+
+              }.bind(this),function(error){
+                console.log(error);
+              })
+            };
+
+//////////////////////////////////////////////////////////////////////////
+
+  //summit section
+
+//////////////////////////////////////////////////////////////////////////
+
+this.summit = {};
+// this.summits = ["Grays Peak", "Torreys Peak", "Mt. Evans", "Longs Peak", "Pikes Peak", "Mt. Bierstadt", "Quandary Peak", "Mt. Lincoln", "Mt. Cameron", "Mt. Bross", "Mt. Democrat", "Mt. Sherman", "Mt. Elbert", "Mt. Massive", "Mt. Harvard", "La Plata Peak", "Mt. Antero", "Mt. Shavano", "Mt. Belford", "Mt. Princeton", "Mt. Yale", "Tabeguache Peak", "Mt. Oxford", "Mt. Columbia", "Missouri Mountain", "Mt. of the Holy Cross", "Huron Peak", "Castle Peak", "Maroon Peak", "Capitol Peak", "Snowmass Mountain", "Conundrum Peak", "Pyramid Peak", "North Maroon Peak", "Uncompahgre Peak", "Mt. Wilson", "El Diente Peak", "Mt. Sneffels", "Mt. Eolus", "Windom Peak", "Sunlight Peak", "Handies Peak", "North Eolus", "Redcloud Peak", "Wilson Peak", "Wetterhorn Peak", "San Luis Peak", "Sunshine Peak", "Blanca Peak", "Crestone Peak", "Crestone Needle", "Kit Carson Peak", "Challenger Point", "Humboldt Peak", "Culebra Peak", "Mt. Lindsey", "Ellingwood Point", "Little Bear Peak"];
+this.editedSummit = {};
+this.currentSummit = {};
+
+// create Summit
+this.createSummit = function(newSummit) {
+  $http({
+    url: this.url + '/summits',
+    method: 'POST',
+    data: { summit: { name: newSummit.name, description: newSummit.description, difficulty: newSummit.difficulty, img: newSummit.img, location: newSummit.location }}
+  }).then(function(response) {
+    console.log(response);
+    this.summit = response.data.summit;
+  })
+}
+
+// get 1 Summits
+// from rails routes: summit GET    /summits/:id(.:format)   summits#show
+this.getSummit = function(id){
+  console.log('getSummit talking');
+    $http({
+      method: 'GET',
+      url: this.url + "/summits/" + id
+
+    }).then(function(response){
+      controller.currentSummit = response.data;
+    }, function(error){
+      console.log(error,'getSummit error')
+    })
+  };
+
+// get all Summits
+this.getSummits = function() {
+  console.log('getSummits talking');
+  $http({
+    url: this.url + '/summits',
+    method: 'GET'
+  }).then(function(response) {
+    console.log(response.data);
+    controller.summitIndex = response.data;
+    console.log("--------------");
+    console.log("controller.summitIndex data is " + controller.summitIndex);
+    console.log("--------------");
+  })
+}
+
+// edit summit
+this.editSummit = function(id){
+    $http({
+      method: 'GET',
+      url: this.url + '/summits/' + id
+    }).then(function(response){
+      controller.currentSummit = response.data;
+    }, function(error){
+      console.log(error,'summit edit error')
+    })
+  };
+
+  this.pushSummitEdit = function(){
+    $http({
+      method: 'PUT',
+      url: this.url + '/summits/' + this.currentSummit.id,
+      data: this.currentSummit
+    }).then(function(response){
+      console.log(response);
+      controller.getSummits();
+    }, function(error){
+      console.log(error, 'pushSummitEdit error');
+    })
+  };
+
+// delete summit
+this.deleteSummit = function(id) {
+  $http({
+    method: 'DELETE',
+    url: this.url + '/summits/' + id
+  }).then(function(response) {
+    console.log(response);
+    controller.getSummits();
+  });
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+  //ascension section
+
+//////////////////////////////////////////////////////////////////////////
+this.ascension = {};
+this.ascensions = [];
+this.newAscensionSearch = {};
+this.showAscension = {};
 
 
-
-
-  //////////////////////////////////////////////////////////////////////////
-
-    //modal section
-
-  //////////////////////////////////////////////////////////////////////////
-
-    $scope.toggleAboutModal = function() {
-        $scope.modalShown1 = !$scope.modalShown1;
+//show one ascension
+// from rails routes: ascension GET    /ascensions/:id(.:format)    ascensions#show
+this.showAscension = function(id){
+  console.log('showAscension talking');
+  $http({
+    url: this.url + '/ascensions/' + id,
+    method: 'GET',
+  }).then(function(response) {
+    console.log(response.data);
+          controller.currentAscension = response.data;
+          console.log("--------------");
+          console.log("this is controller.currentAscension, which is response.data", controller.currentAscension);
+          console.log("--------------");
+        }.bind(this),function(error){
+          console.log(error);
+        })
       };
+
+
+// create ascension
+this.createAscension = function(newAscension) {
+  console.log('this createAscension works');
+  $http({
+    url: this.url + '/ascensions',
+    method: 'POST',
+    data: { ascension: { climber_id: newAscension.climber_id, summit_id: newAscension.summit_id, comments: newAscension.comments, likes: newAscension.likes }}
+  }).then(function(response) {
+    console.log(response);
+    controller.getAscensions();
+  })
+}
+
+// get all ascensions
+this.getAscensions = function() {
+  console.log('getAscensions talking');
+  $http({
+    url: this.url + '/ascensions',
+    method: 'GET',
+  }).then(function(response) {
+    console.log(response.data);
+    controller.ascensionIndex = response.data;
+    console.log('ascensionIndex response is ' + controller.ascensionIndex);
+  })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////
+
+  //modal section
+
+//////////////////////////////////////////////////////////////////////////
+
+  // $scope.toggleAboutModal = function() {
+  //     $scope.modalShown1 = !$scope.modalShown1;
+  //   };
+
 
 
 

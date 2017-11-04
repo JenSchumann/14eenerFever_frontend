@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>14eener Fever</title>
 
-    <!-- Favicon -->
+    <!-- Favicon  -->
     <link href="/assets/Asset 2.png" rel="icon" type="image/png">
 
     <!-- Fonts -->
@@ -17,7 +17,10 @@
 
     <!-- Angular  -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script> -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+
 
     <!-- 14eener Fever JScript -->
         <script type="text/javascript" src="app.js"></script>
@@ -31,6 +34,10 @@
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
+
+
+
+
         <!--14eener Fever Stylesheet-->
         <link rel="stylesheet" href="style.css">
 
@@ -41,143 +48,10 @@
       <h1>14eener Fever</h1> -->
 
 
-
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="#"><img src="/assets/mountain2.svg" width="60" height="60" alt="">
-    14eener Fever</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <section id="nav" ng-include="'./nav.html'"></section>
 
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" ng-click="toggleAboutModal()" class="nav-link disabled" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Climbers</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Summits
-        </a>
-        <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#Grays Peak">Grays Peak</a>
-          <a class="dropdown-item" href="#Torreys Peak">Torreys Peak</a>
-          <a class="dropdown-item" href="#Mt. Evans">Mt. Evans</a>
-          <a class="dropdown-item" href="#Longs Peak">Longs Peak</a>
-          <a class="dropdown-item" href="Pikes Peak">Pikes Peak</a>
-          <a class="dropdown-item" href="#Mt. Bierstadt">Mt. Bierstadt</a>
-          <a class="dropdown-item" href="#Quandary Peak">Quandary Peak</a>
-          <a class="dropdown-item" href="#Mt. Lincoln">Mt. Lincoln</a>
-          <a class="dropdown-item" href="#Mt. Cameron">Mt. Cameron</a>
-          <a class="dropdown-item" href="#Mt. Bross">Mt. Bross</a>
-          <a class="dropdown-item" href="#Mt. Democrat">Mt. Democrat</a>
-          <a class="dropdown-item" href="#Mt. Sherman">Mt. Sherman</a>
-          <a class="dropdown-item" href="#Mt. Elbert">Mt. Elbert</a>
-          <a class="dropdown-item" href="#Mt. Massive">Mt. Massive</a>
-          <a class="dropdown-item" href="#Mt. Harvard">Mt. Harvard</a>
-          <a class="dropdown-item" href="#La Plata Peak">La Plata Peak</a>
-          <a class="dropdown-item" href="#Mt. Antero">Mt. Antero</a>
-          <a class="dropdown-item" href="#Mt. Shavano">Mt. Shavano</a>
-          <a class="dropdown-item" href="#Mt. Belford">Mt. Belford</a>
-          <a class="dropdown-item" href="#Mt. Princeton">Mt. Princeton</a>
-          <a class="dropdown-item" href="#Mt. Yale">Mt. Yale</a>
-          <a class="dropdown-item" href="#Tabeguache Peak">Tabeguache Peak</a>
-          <a class="dropdown-item" href="#Mt. Oxford">Mt. Oxford</a>
-          <a class="dropdown-item" href="#Mt. Columbia">Mt. Columbia</a>
-          <a class="dropdown-item" href="#Missouri Mountain">Missouri Mountain</a>
-          <a class="dropdown-item" href="#Mt. of the Holy Cross">Mt. of the Holy Cross</a>
-          <a class="dropdown-item" href="#Huron Peak">Huron Peak</a>
-          <a class="dropdown-item" href="#Castle Peak">Castle Peak</a>
-          <a class="dropdown-item" href="#Maroon Peak">Maroon Peak</a>
-          <a class="dropdown-item" href="#Capitol Peak">Capitol Peak</a>
-          <a class="dropdown-item" href="#Snowmass Mountain">Snowmass Mountain</a>
-          <a class="dropdown-item" href="#Conundrum Peak">Conundrum Peak</a>
-          <a class="dropdown-item" href="#Pyramid Peak">Pyramid Peak</a>
-          <a class="dropdown-item" href="#North Maroon Peak">North Maroon Peak</a>
-          <a class="dropdown-item" href="#Uncompahgre Peak">Uncompahgre Peak</a>
-          <a class="dropdown-item" href="#Mt. Wilson">Mt. Wilson</a>
-          <a class="dropdown-item" href="#El Diente Peak">El Diente Peak</a>
-          <a class="dropdown-item" href="#Mt. Sneffels">Mt. Sneffels</a>
-          <a class="dropdown-item" href="#Mt. Eolus">Mt. Eolus</a>
-          <a class="dropdown-item" href="#Windom Peak">Windom Peak</a>
-          <a class="dropdown-item" href="#Sunlight Peak">Sunlight Peak</a>
-          <a class="dropdown-item" href="#Handies Peak">Handies Peak</a>
-          <a class="dropdown-item" href="#North Eolus">North Eolus</a>
-          <a class="dropdown-item" href="#Redcloud Peak">Redcloud Peak</a>
-          <a class="dropdown-item" href="#Wilson Peak">Wilson Peak</a>
-          <a class="dropdown-item" href="#Wetterhorn Peak">Wetterhorn Peak</a>
-          <a class="dropdown-item" href="#San Luis Peak">San Luis Peak</a>
-          <a class="dropdown-item" href="#Sunshine Peak">Sunshine Peak</a>
-          <a class="dropdown-item" href="#Blanca Peak">Blanca Peak</a>
-          <a class="dropdown-item" href="#Crestone Peak">Crestone Peak</a>
-          <a class="dropdown-item" href="#Crestone Needle">Crestone Needle</a>
-          <a class="dropdown-item" href="#Kit Carson Peak">Kit Carson Peak</a>
-          <a class="dropdown-item" href="#Challenger Point">Challenger Point</a>
-          <a class="dropdown-item" href="#Humboldt Peak">Humboldt Peak</a>
-          <a class="dropdown-item" href="#Culebra Peak">Culebra Peak</a>
-          <a class="dropdown-item" href="#Mt. Lindsey">Mt. Lindsey</a>
-          <a class="dropdown-item" href="#Ellingwood Point">Ellingwood Point</a>
-          <a class="dropdown-item" href="#Little Bear Peak">Little Bear Peak</a>
-        </div>
-      </li>
-
-
-
-<li class="nav-item">
-          <div ng-if="ctrl.loggedIn==false" id="authForms">
-            <a ng-click="ctrl.displayReg=!ctrl.displayReg" class="nav-link"  id="reg" style="color: #331f00;">Register</a>
-            <div ng-if="ctrl.displayReg==true">
-              <form ng-submit="ctrl.createUser(userPass)">
-                <input type="text" ng-model="userPass.username" placeholder="username"/>
-                <input type="password" ng-model="userPass.password" placeholder="password"/>
-                <input class="btn btn-dark" type="submit"/>
-              </form>
-
-            </div>
-          </div>
-        </li>
-
-
-        <li class="nav-item">
-          <div ng-if="ctrl.loggedIn==false" id="authForms">
-            <a ng-click="ctrl.displayLog=!ctrl.displayLog" class="nav-link" id="reg" style="color: #331f00;">Login</a>
-            <div ng-if="ctrl.displayLog==true">
-
-              <form ng-submit="ctrl.login(userPass);">
-                <input type="text" ng-model="userPass.username" placeholder="Username"/>
-                <input type="password" ng-model="userPass.password" placeholder="Password"/>
-                <input class="btn btn-dark" type="submit"/>
-              </form>
-            </div>
-            </div>
-        </li>
-
-
-
-      <div ng-if="ctrl.loggedIn==true" id="logoutDiv">
-        <p style="color: #331f00;">  Climber: {{ ctrl.user.username }} </p>
-        <a ng-click="ctrl.logout();" id="logout">Log Out</a>
-      </div>
-    </div>
-
-
-</ul>
-
-
-<div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-</nav>
 
 <!-- Background Image -->
 <img class="main-img img-responsive" ng-if=!ctrl.loggedin src="./assets/pexels-photo-92658.jpeg"alt="14eener Fever"/>
@@ -185,15 +59,18 @@
 <div class="container">
   <h1>You Have Climbed This Mountain</h1>
   <!-- <p>Climber Logged In: {{ctrl.user.username}}</p> -->
+
+
 </div>
 
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
 <!--  modal section (about) -->
-    <div class="aboutModal" id="Modal">
-      <modal-dialog show='modalShown1' width='750px' height='60%'>
-        <div id="Modal">
-          <h2 class="piquedH2">Have the Fever?</h2>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+          <h2 class="mountainH2">Have the Fever?</h2>
           <p class="about">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
@@ -202,10 +79,29 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">here.</a>
 
           </p>
-        </div>
-      </modal-dialog>
-    </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- /////////////////////////////////////////////////////////////////////// -->
+
+<!-- ng-show="ctrl.showClimbers();" throws an infinite loop of backend seed data climbers -->
+
+<section id="climbers" ng-click="ctrl.showClimbers();">
+                        <!-- <h3 class="menu"><a ng-click="ctrl.showClimbers();" ng-show="ctrl.showClimbers();">  {{ctrl.currentClimber.name}}  </a></h3> -->
+
+                        <ul id=climberGroup>
+                              <li class="climberNames" ng-repeat="climbersIndex in ctrl.climbersIndex track by $index" ng-show="ctrl.climbersIndex">
+
+                                <center><h3 ng-click="ctrl.setCurrentClimber(climbersIndex.id);">Climber Name:
+                                <a>{{ climbersIndex.name }}</a></h3></center>
+
+                              </li>
+                        </ul>
+</section>
+
+<!-- /////////////////////////////////////////////////////////////////////// -->
 
 
   </body>
