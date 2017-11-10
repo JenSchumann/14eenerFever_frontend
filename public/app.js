@@ -104,21 +104,39 @@ this.showClimbers = function(){
       }
 
 
-      this.setCurrentClimber = function(id){
-              $http({
-                url: this.url + '/climbers/' + id,
-                method: 'GET',
-              }).then(function(response) {
-                console.log(response.data);
-                controller.currentClimber = response.data;
-                console.log("--------------");
-                console.log("this is controller.currentClimber, which is response.data", controller.currentClimber);
-                console.log("--------------");
+this.setCurrentClimber = function(id){
+        $http({
+          url: this.url + '/climbers/' + id,
+          method: 'GET',
+        }).then(function(response) {
+          console.log(response.data);
+          controller.currentClimber = response.data;
+          console.log("--------------");
+          console.log("this is controller.currentClimber, which is response.data", controller.currentClimber);
+          console.log("--------------");
 
-              }.bind(this),function(error){
-                console.log(error);
-              })
-            };
+        }.bind(this),function(error){
+          console.log(error);
+      })
+};
+
+//create new climber Profile
+this.createClimberProfile = function(newClimberProfile) {
+  console.log("createClimberProfile talking");
+  $http({
+    url: this.url + '/climbers',
+    method: 'POST',
+    data: { climber: { name: this.newClimberProfile.name, img: this.newClimberProfile.img, about: this.newClimberProfile.about, level: this.newClimberProfile.level }},
+  }).then(function(response) {
+        console.log(response);
+        console.log("------------");
+        console.log("response is: ", response);
+      // this.showPlanForm = false;
+      // controller.showUserPlanIndex();
+      }.bind(this),function(error){
+        console.log(error);
+      })
+    };
 
 //////////////////////////////////////////////////////////////////////////
 

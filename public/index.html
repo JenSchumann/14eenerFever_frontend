@@ -102,9 +102,14 @@
   <div class="modal fade bd-climbers-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <button type="button" class="close ng-modal-close" aria-label="Close" ng-click='hideModal()'>
-    <span class="float-right" aria-hidden="true">&times;</span>
-  </button>
+
+
+        <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">14eener Climbers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
                         <ul id=climberGroup>
                               <li class="climberNames" ng-repeat="climbersIndex in ctrl.climbersIndex track by $index" ng-show="ctrl.climbersIndex">
@@ -150,18 +155,16 @@
 <!-- ng-click="ctrl.getSummit();" -->
   <div class="modal fade bd-summits-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
+      <div class="modal-content data-spy="scroll"">
+
       <div class="modal-content">
-        <!-- <button type="button" class="close ng-modal-close" aria-label="Close" ng-click='hideModal()'>
-    <span class="float-right" aria-hidden="true">&times;</span>
-  </button> -->
 
-
-                        <!-- <ul id=summitGroup>
-                              <li class="summitNames"
-
-
-                              ng-repeat="currentSummit in ctrl.currentSummit track by $index"
-                              ng-show="ctrl.currentSummit"> -->
+        <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ ctrl.currentSummit.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
                                 <div class="card" style="width: 40rem;">
                                    <!-- ng-click="ctrl.getSummit(summitIndex.id);"> -->
@@ -221,58 +224,51 @@
               <form>
   <div class="form-group">
     <label for="climberProfileName">Climber Profile Name</label>
-    <input type="text" class="form-control" id="climberProfileName" placeholder="How Your Name Will Be Displayed in Climber Directory">
+    <input type="text" class="form-control" ng-model="ctrl.newClimberProfile.name" id="climberProfileName" placeholder="How Your Name Will Be Displayed in Climber Directory">
   </div>
 
   <!-- image input div -->
   <div class="form-group">
     <label for="climberProfilePic">Climber Profile Picture</label>
-    <input type="file" class="form-control-file" id="climberProfilePic" placeholder="Climber Profile Picture">
+    <input type="file" class="form-control-file" ng-model="ctrl.newClimberProfile.img" id="climberProfilePic" placeholder="Climber Profile Picture">
   </div>
 
   <div class="form-group">
     <label for="aboutClimberTextarea">About Me</label>
-    <textarea class="form-control" id="aboutClimberTextarea" rows="3"></textarea>
+    <!-- <input type="integer" class="form-control" ng-model="ctrl.newClimberProfile.about"> -->
+    <textarea class="form-control" ng-model="ctrl.newClimberProfile.about" id="aboutClimberTextarea" rows="3"></textarea>
   </div>
 
   <div class="form-group">
     <label for="climberLevel">Climber Ability Level</label>
-    <select multiple class="form-control" id="climberLevel">
+    <!-- <input type="text" class="form-control" "> -->
+    <select multiple class="form-control" ng-model="ctrl.newClimberProfile.level" id="climberLevel">
       <!-- define what each of these levels means somewhere  -->
-      <option>Beginner</option>
-      <option>Intermediate</option>
-      <option>Accomplished</option>
-      <option>Advanced</option>
-      <option>Expert</option>
+      <option type="text" ng-model="ctrl.newClimberProfile.level">Beginner</option>
+      <option type="text" ng-model="ctrl.newClimberProfile.level">Intermediate</option>
+      <option type="text" ng-model="ctrl.newClimberProfile.level">Accomplished</option>
+      <option type="text" ng-model="ctrl.newClimberProfile.level">Advanced</option>
+      <option type="text" ng-model="ctrl.newClimberProfile.level">Expert</option>
     </select>
   </div>
 
   <div class="form-group">
-    <label for="14eenersClimbed">14eeners I've Summitted</label>
+    <!-- need to have ng-directive that doesn't need click for summits to show (ng-show throws loop) -->
+    <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted</label>
     <select multiple class="form-control" id="14eeners">
+      <!-- would the ng-model be ctrl.ascension.summit_id?? -->
+      <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.summit">{{summitIndex.name}}</option>
 
-      <!-- this is not working yet: -->
-      <option>{{summitIndex.name}}</option>
-      <!--  -->
-      <!-- <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option> -->
     </select>
   </div>
 
 </form>
 
 
-
-
-
-
-
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" ng-click="ctrl.createClimberProfile(newClimberProfile);" class="btn btn-primary">Save changes</button>
               </div>
             </div>
              </div>
