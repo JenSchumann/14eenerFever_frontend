@@ -106,7 +106,7 @@ this.showClimbers = function(){
 
       this.setCurrentClimber = function(id){
               $http({
-                url: this.url + '/users/' + this.user.id + '/summits/' + id,
+                url: this.url + '/climbers/' + id,
                 method: 'GET',
               }).then(function(response) {
                 console.log(response.data);
@@ -127,7 +127,6 @@ this.showClimbers = function(){
 //////////////////////////////////////////////////////////////////////////
 
 this.summit = {};
-// this.summits = ["Grays Peak", "Torreys Peak", "Mt. Evans", "Longs Peak", "Pikes Peak", "Mt. Bierstadt", "Quandary Peak", "Mt. Lincoln", "Mt. Cameron", "Mt. Bross", "Mt. Democrat", "Mt. Sherman", "Mt. Elbert", "Mt. Massive", "Mt. Harvard", "La Plata Peak", "Mt. Antero", "Mt. Shavano", "Mt. Belford", "Mt. Princeton", "Mt. Yale", "Tabeguache Peak", "Mt. Oxford", "Mt. Columbia", "Missouri Mountain", "Mt. of the Holy Cross", "Huron Peak", "Castle Peak", "Maroon Peak", "Capitol Peak", "Snowmass Mountain", "Conundrum Peak", "Pyramid Peak", "North Maroon Peak", "Uncompahgre Peak", "Mt. Wilson", "El Diente Peak", "Mt. Sneffels", "Mt. Eolus", "Windom Peak", "Sunlight Peak", "Handies Peak", "North Eolus", "Redcloud Peak", "Wilson Peak", "Wetterhorn Peak", "San Luis Peak", "Sunshine Peak", "Blanca Peak", "Crestone Peak", "Crestone Needle", "Kit Carson Peak", "Challenger Point", "Humboldt Peak", "Culebra Peak", "Mt. Lindsey", "Ellingwood Point", "Little Bear Peak"];
 this.editedSummit = {};
 this.currentSummit = {};
 
@@ -148,11 +147,16 @@ this.createSummit = function(newSummit) {
 this.getSummit = function(id){
   console.log('getSummit talking');
     $http({
-      method: 'GET',
-      url: this.url + "/summits/" + id
+
+      url: this.url + '/summits/' + id,
+      method: 'GET'
 
     }).then(function(response){
+      console.log(response.data);
+      console.log("--------------");
       controller.currentSummit = response.data;
+      console.log("this is controller.currentSummit, which is ", controller.currentSummit);
+      console.log("--------------");
     }, function(error){
       console.log(error,'getSummit error')
     })
@@ -163,21 +167,18 @@ this.getSummits = function() {
   console.log('getSummits talking');
   $http({
     url: this.url + '/summits',
-    method: 'GET'
+    method: 'GET',
   }).then(function(response) {
     console.log(response.data);
     controller.summitIndex = response.data;
-    console.log("--------------");
-    console.log("controller.summitIndex data is " + controller.summitIndex);
-    console.log("--------------");
   })
 }
 
 // edit summit
-this.editSummit = function(id){
+this.editSummit = function(currentSummit){
     $http({
       method: 'GET',
-      url: this.url + '/summits/' + id
+      url: this.url + '/summits/' + this.currentSummit.id,
     }).then(function(response){
       controller.currentSummit = response.data;
     }, function(error){
@@ -272,10 +273,15 @@ this.getAscensions = function() {
   //modal section
 
 //////////////////////////////////////////////////////////////////////////
-
+// useless:
   // $scope.toggleAboutModal = function() {
   //     $scope.modalShown1 = !$scope.modalShown1;
   //   };
+  //
+  // $scope.toggleClimberModal = function() {
+  //     $scope.modalShown2 = !$scope.modalShown2;
+  //   };
+
 
 
 
@@ -294,6 +300,11 @@ this.getAscensions = function() {
 //end of mtnController
 }]);
 
+// for bootstrap cards
+$('#myList a[href="#profile"]').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 
 app.directive('modalDialog', function() {
   return {
