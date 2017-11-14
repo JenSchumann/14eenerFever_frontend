@@ -15,7 +15,7 @@
       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
     </li> -->
     <li class="nav-item">
-      <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg" class="nav-link disabled" href="#about">About</a>
+      <a class="nav-link" data-toggle="modal" data-target=".bd-about-modal-lg" class="nav-link disabled" href="#about">About</a>
     </li>
     <!-- <li class="nav-item">
       <a class="nav-link" id="climbers" href="#climbers" ng-click="ctrl.showClimbers();">Climbers</a>
@@ -85,13 +85,15 @@
         </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                  <a class="dropdown-item" href="#userProfile" data-toggle="modal" data-target=".bd-user-modal-lg" class="nav-link disabled">{{ctrl.user.username}}'s Profile</a>
+                  <a class="dropdown-item" href="#createUserProfile" data-toggle="modal" data-target=".bd-user-modal-lg" class="nav-link disabled">Create Profile</a>
+
+                  <a class="dropdown-item" href="#userClimberProfile" data-toggle="modal" data-target=".bd-userShow-modal-lg" class="nav-link disabled">View/Update Profile</a>
 
 
 
 
 
-                  <a class="dropdown-item" href="#">Update Profile</a>
+                  <!-- <a class="dropdown-item" href="#">Update Profile</a> -->
                   <a class="dropdown-item" href="#">Add Ascent</a>
                   <div class="dropdown-divider"></div>
                   <a ng-click="ctrl.logout();" id="logout" class="dropdown-item" href="#">Log Out</a>
