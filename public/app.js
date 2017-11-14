@@ -103,20 +103,28 @@ this.showClimbers = function(){
         })
       }
 
-
+//error thrown w/this function:
 this.setCurrentClimber = function(id){
+  console.log('setCurrentClimber talking');
         $http({
           url: this.url + '/climbers/' + id,
-          method: 'GET',
+          method: 'GET'
+
         }).then(function(response) {
           console.log(response.data);
-          controller.currentClimber = response.data;
+
           console.log("--------------");
+          controller.currentClimber = response.data;
           console.log("this is controller.currentClimber, which is response.data", controller.currentClimber);
           console.log("--------------");
 
-        }.bind(this),function(error){
-          console.log(error);
+        }, function(error){
+
+          //setcurrentClimber error is appearing
+          console.log(error,'setCurrentClimber error')
+
+        // }.bind(this),function(error){
+        //   console.log(error);
       })
 };
 
@@ -126,13 +134,59 @@ this.createClimberProfile = function(newClimberProfile) {
   $http({
     url: this.url + '/climbers',
     method: 'POST',
-    data: { climber: { name: this.newClimberProfile.name, img: this.newClimberProfile.img, about: this.newClimberProfile.about, level: this.newClimberProfile.level }},
+    data: { climber: { name: this.newClimberProfile.name, img: this.newClimberProfile.img, about: this.newClimberProfile.about, level: this.newClimberProfile.level, summits: this.newClimberProfile.summits }},
   }).then(function(response) {
         console.log(response);
         console.log("------------");
         console.log("response is: ", response);
-      // this.showPlanForm = false;
-      // controller.showUserPlanIndex();
+      }.bind(this),function(error){
+        console.log(error);
+      })
+    };
+
+//get request to edit climber profile
+this.editClimberProfile = function(currentClimber) {
+   $http({
+     method: 'GET',
+     url: this.url + '/climbers/' + this.currentClimber.id,
+   }).then(function(response){
+     controller.currentClimber = response.data;
+     console.log("--------------");
+     console.log("this is editClimberProfile trying to get ahold of the selected climber which is controller.currentClimber, which is response", controller.currentClimber);
+     console.log("--------------");
+   }, function(error) {
+     console.log(error, 'editClimberProfile error');
+   })
+ }
+
+//POST request to show updated climber profile
+this.pushEditedClimberProfile = function(name, img, about, level, summits){
+   console.log("trying to update the climber profile");
+
+
+   $http({
+     method: 'PUT',
+     url: this.url + '/climbers/' + this.updatedClimber.id,
+     data: { climber: { name: this.updatedClimber.name, img: this.updatedClimber.img, about: this.updatedClimber.about, level: this.updatedClimber.level, summits: this.updatedClimber.summits }}
+   }).then(function(response){
+     console.log(response);
+     console.log("--------------");
+     controller.currentClimber = response.data;
+
+     console.log("this is controller.currentClimber which should be the updated climber, which is response", controller.currentClimber);
+     console.log("--------------");
+
+ }.bind(this));
+}
+
+this.deleteClimberProfile = function(currentClimber) {
+      $http({
+        method: 'DELETE',
+        url: this.url + '/climbers/' + this.currentClimber.id,
+      }).then(function(response) {
+        console.log(response);
+        console.log('this is deleteClimberProfile');
+
       }.bind(this),function(error){
         console.log(error);
       })
@@ -172,8 +226,8 @@ this.getSummit = function(id){
     }).then(function(response){
       console.log(response.data);
       console.log("--------------");
+      //do i have this line for the climbers?
       controller.currentSummit = response.data;
-      console.log("this is controller.currentSummit, which is ", controller.currentSummit);
       console.log("--------------");
     }, function(error){
       console.log(error,'getSummit error')
@@ -324,6 +378,7 @@ $('#myList a[href="#profile"]').on('click', function (e) {
   $(this).tab('show')
 })
 
+// for bootstrap modals
 app.directive('modalDialog', function() {
   return {
     restrict: 'E',
