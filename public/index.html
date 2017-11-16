@@ -154,7 +154,7 @@
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
 <!-- <div class="d-flex justify-content-center"> -->
-<!-- ctrl.summitIndex was working... how to I get the name of the peak to access the summit info and not an index of all the data -->
+
 <section id="summits" >
 <!-- ng-click="ctrl.getSummit();" -->
   <div class="modal fade bd-summits-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -290,7 +290,7 @@
 
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
-<section id="userClimberProfile" >
+<section id="userClimberProfile">
 
   <div class="modal fade bd-userShow-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
@@ -327,12 +327,15 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
 
 
 
-            <h5 class="profileDetails">Profile Name: {{ctrl.currentClimber.name}}</h5><br>
+            <h5 class="profileDetails">Profile Name: {{ctrl.currentClimber.name}}
+
+              {{ctrl.newClimberProfile.name}}
+            </h5><br>
 
             <h5 class="profileDetails">Profile Picture: </h5><br>
             <img src=" {{ctrl.currentClimber.img }} " alt="Climber Image"><br>
 
-            <h5 class="profileDetails">About Me: {{ctrl.ctrl.currentClimber.about}}</h5><br>
+            <h5 class="profileDetails">About Me: {{ctrl.currentClimber.about}}</h5><br>
 
             <h5 class="profileDetails">Climbing Ability Level: {{ctrl.currentClimber.level}}</h5><br>
 
@@ -358,21 +361,26 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
               <form method="update" name="form" ng-submit="ctrl.pushEditedClimberProfile(ctrl.updatedClimber.name, ctrl.updatedClimber.img, ctrl.updatedClimber.about, ctrl.updatedClimber.level, ctrl.updatedClimber.summits)">
 
                   <div class="form-group">
+                    <label for="climberProfileUpdate">Updated Climber Profile Name:</label>
                     <input type="text" class="form-control" placeholder="Climber Profile Name" ng-model="ctrl.updatedClimber.name"></br>
                   </div>
 
                   <div class="form-group">
+                    <label for="climberProfileUpdate">Updated Climber Profile Picture:</label>
                     <input type="text" class="form-control" ng-model="ctrl.updatedClimber.img" placeholder="Climber Profile Image URL"/></br>
                   </div>
 
                   <div class="form-group">
+                    <label for="climberProfileUpdate">Updated Climber Profile Description:</label>
                     <input type="text" class="form-control" ng-model="ctrl.updatedClimber.about" placeholder="About Me"/> </br>
                   </div>
 
                   <div class="form-group">
-                    <label for="climberLevel">Climber Ability Level</label>
+                    <label for="climberProfileUpdate">Updated Climber Ability Level:</label>
+
                     <!-- <input type="text" class="form-control" "> -->
                     <select multiple class="form-control" type="text" id="climberLevel" ng-model="ctrl.updatedClimber.level">
+
                       <!-- define what each of these levels means somewhere  -->
                       <option>Beginner</option>
                       <option>Intermediate</option>
@@ -384,7 +392,7 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
 
                   <div class="form-group">
                     <!-- need to have ng-directive that doesn't need click for summits to show (ng-show throws loop) -->
-                    <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted</label>
+                    <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted:</label>
                     <select multiple class="form-control" id="14eeners">
                       <!-- would the ng-model be ctrl.ascension.summit_id?? -->
                       <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.newClimberProfile.summit">{{summitIndex.name}}</option>
