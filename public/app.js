@@ -166,14 +166,14 @@ this.pushEditedClimberProfile = function(name, img, about, level, summits){
 
    $http({
      method: 'PUT',
-     url: this.url + '/climbers/' + this.updatedClimber.id,
+     url: this.url + '/climbers/' + this.currentClimber.id,
      data: { climber: { name: this.updatedClimber.name, img: this.updatedClimber.img, about: this.updatedClimber.about, level: this.updatedClimber.level, summits: this.updatedClimber.summits }}
    }).then(function(response){
      console.log(response);
      console.log("--------------");
      controller.currentClimber = response.data;
 
-     console.log("this is controller.currentClimber which should be the updated climber, which is response", controller.currentClimber);
+     // console.log("this is controller.updatedClimber which should be the updated climber, which is response", controller.updatedClimber);
      console.log("--------------");
 
  }.bind(this));
