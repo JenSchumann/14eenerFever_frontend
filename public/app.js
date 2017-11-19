@@ -104,10 +104,10 @@ this.showClimbers = function(){
       }
 
 //error thrown w/this function:
-this.setCurrentClimber = function(id){
+this.setCurrentClimber = function(userId){
   console.log('setCurrentClimber talking');
         $http({
-          url: this.url + '/climbers/' + id,
+          url: this.url + '/climbers/' + this.userId,
           method: 'GET'
 
         }).then(function(response) {
