@@ -327,7 +327,7 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
 
 
 
-            <h5 class="profileDetails">Profile Name: {{ctrl.currentClimber.name}}
+            <h5 class="profileDetails" ng-model="ctrl.newClimberProfile.name">Profile Name: {{ctrl.currentClimber.name}}
 
               {{ctrl.newClimberProfile.name}}
             </h5><br>
@@ -335,13 +335,23 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
             <h5 class="profileDetails">Profile Picture: </h5><br>
             <img src=" {{ctrl.currentClimber.img }} " alt="Climber Image"><br>
 
-            <h5 class="profileDetails">About Me: {{ctrl.currentClimber.about}}</h5><br>
+            <img src=" {{ctrl.newClimberProfile.img }} " alt="Climber Image Two"><br>
 
-            <h5 class="profileDetails">Climbing Ability Level: {{ctrl.currentClimber.level}}</h5><br>
+            <h5 class="profileDetails">About Me: {{ctrl.currentClimber.about}}
+
+              {{ctrl.newClimberProfile.about}}
+            </h5><br>
+
+            <h5 class="profileDetails">Climbing Ability Level: {{ctrl.currentClimber.level}}
+
+              {{ctrl.newClimberProfile.level}}
+            </h5><br>
 
             <h5 class="profileDetails">14eeners Climbed:
             <!-- not sure what this should be  -->
             {{ctrl.currentClimber.summits}}
+
+              {{ctrl.newClimberProfile.summits}}
 
           </h5><br>
 
