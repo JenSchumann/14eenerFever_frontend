@@ -192,6 +192,8 @@ this.deleteClimberProfile = function(currentClimber) {
       })
     };
 
+
+
 //////////////////////////////////////////////////////////////////////////
 
   //summit section
@@ -370,6 +372,22 @@ this.getAscensions = function() {
 
 
 //end of mtnController
+}]);
+
+// for climber profile select options
+//still null in database when option is selected
+angular.module('climberLevelSelect', [])
+ app.controller('SelectController', ['$scope', function($scope) {
+   $scope.data = {
+    model: null,
+    ClimberProfileLevels: [
+         {value: 'Beginner', name: 'Beginner'},
+         {value: 'Intermediate', name: 'Intermediate'},
+         {value: 'Accomplished', name: 'Accomplished'},
+         {value: 'Advanced', name: 'Advanced'},
+         {value: 'Expert', name: 'Expert'}
+    ]
+   };
 }]);
 
 // for bootstrap cards
