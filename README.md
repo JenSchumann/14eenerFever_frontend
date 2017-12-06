@@ -13,13 +13,10 @@ Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, P
 **Project Planning:**
 
 - Utilized SCRUM strategies with Trello, Git, & Collegial support
+
 **Technologies Used:**
 
 Adobe XD, Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, Postman
-
-**User Story:**
-
-- User can create an account, create a success plan, view, update & delete a success plan.  
 
 **Project Planning:**
 
