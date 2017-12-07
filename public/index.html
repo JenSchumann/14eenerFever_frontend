@@ -244,10 +244,12 @@
     <textarea class="form-control" ng-model="ctrl.newClimberProfile.about" id="aboutClimberTextarea" rows="3"></textarea>
   </div>
 
+<!-- used the following resource to try to save a selected level to db (still troubleshooting): -->
+<!-- https://docs.angularjs.org/api/ng/directive/select#using-ngvalue-to-bind-the-model-to-an-array-of-objects -->
   <div class="form-group" ng-controller="SelectController">
     <label for="climberLevelSelect">Climber Ability Level: </label>
 
-    <select size="5" name="climberLevelSelect" ng-model="ctrl.data.model" multiple>
+    <select size="5" name="climberLevelSelect" ng-model="data.climbers" multiple>
 
 
        <!-- ng-model="ctrl.newClimberProfile.level"> -->
@@ -255,7 +257,7 @@
       <option ng-repeat="option in data.ClimberProfileLevels" ng-value="option.value">{{option.name}}</option>
 
       <hr>
-      <pre>model = {{data.model | json}}</pre><br/>
+      <pre>model = {{data.climbers.level | json}}</pre><br/>
     </select>
   </div>
 
