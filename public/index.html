@@ -54,12 +54,11 @@
 
 
   <!-- navbar -->
-
   <section id="nav" ng-include="'./nav.html'"></section>
 
 
-<!-- Background Image -->
-<img class="main-img img-responsive" ng-if=!ctrl.loggedin src="./assets/pexels-photo-92658.jpeg"alt="14eener Fever"/>
+  <!-- Background Image -->
+  <img class="main-img img-responsive" ng-if=!ctrl.loggedin src="./assets/pexels-photo-92658.jpeg"alt="14eener Fever"/>
 
 <!-- <div class="container"> -->
   <!-- <h1>You Have Climbed This Mountain</h1> -->
@@ -351,8 +350,9 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
 
             <h5 class="profileDetails">14eeners Climbed:
             <!-- not sure what this should be  -->
+            <!-- doesn't work: -->
             {{ctrl.currentClimber.summits}}
-
+            <!-- doesn't work either: -->
               {{ctrl.newClimberProfile.summits}}
 
           </h5><br>
@@ -379,6 +379,7 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
 
                   <div class="form-group">
                     <label for="climberProfileUpdate">Updated Climber Profile Picture:</label>
+                    <!-- image needs some styling (responsive to the size of the modal) -->
                     <input type="text" class="form-control" ng-model="ctrl.updatedClimber.img" placeholder="Climber Profile Image URL"/></br>
                   </div>
 
@@ -394,6 +395,7 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
                     <select multiple class="form-control" type="text" id="climberLevel" ng-model="ctrl.updatedClimber.level">
 
                       <!-- define what each of these levels means somewhere  -->
+                      <!-- selection of these does not save to the db yet -->
                       <option>Beginner</option>
                       <option>Intermediate</option>
                       <option>Accomplished</option>
