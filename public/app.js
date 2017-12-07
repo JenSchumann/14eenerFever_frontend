@@ -367,7 +367,9 @@ this.getAscensions = function() {
 angular.module('climberLevelSelect', [])
  app.controller('SelectController', ['$scope', function($scope) {
    $scope.data = {
-    model: null,
+     //this doesn't work:
+    // model: null,
+    model: this.climbers,
     ClimberProfileLevels: [
          {value: 'Beginner', name: 'Beginner'},
          {value: 'Intermediate', name: 'Intermediate'},
