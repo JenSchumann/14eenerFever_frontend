@@ -249,40 +249,42 @@ this.getSummits = function() {
 }
 
 // edit summit
-this.editSummit = function(currentSummit){
-    $http({
-      method: 'GET',
-      url: this.url + '/summits/' + this.currentSummit.id,
-    }).then(function(response){
-      controller.currentSummit = response.data;
-    }, function(error){
-      console.log(error,'summit edit error')
-    })
-  };
+//commenting out this functionality until I build admin user CRUD
 
-  this.pushSummitEdit = function(){
-    $http({
-      method: 'PUT',
-      url: this.url + '/summits/' + this.currentSummit.id,
-      data: this.currentSummit
-    }).then(function(response){
-      console.log(response);
-      controller.getSummits();
-    }, function(error){
-      console.log(error, 'pushSummitEdit error');
-    })
-  };
-
-// delete summit
-this.deleteSummit = function(id) {
-  $http({
-    method: 'DELETE',
-    url: this.url + '/summits/' + id
-  }).then(function(response) {
-    console.log(response);
-    controller.getSummits();
-  });
-}
+// this.editSummit = function(currentSummit){
+//     $http({
+//       method: 'GET',
+//       url: this.url + '/summits/' + this.currentSummit.id,
+//     }).then(function(response){
+//       controller.currentSummit = response.data;
+//     }, function(error){
+//       console.log(error,'summit edit error')
+//     })
+//   };
+//
+//   this.pushSummitEdit = function(){
+//     $http({
+//       method: 'PUT',
+//       url: this.url + '/summits/' + this.currentSummit.id,
+//       data: this.currentSummit
+//     }).then(function(response){
+//       console.log(response);
+//       controller.getSummits();
+//     }, function(error){
+//       console.log(error, 'pushSummitEdit error');
+//     })
+//   };
+//
+// // delete summit
+// this.deleteSummit = function(id) {
+//   $http({
+//     method: 'DELETE',
+//     url: this.url + '/summits/' + id
+//   }).then(function(response) {
+//     console.log(response);
+//     controller.getSummits();
+//   });
+// }
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -341,20 +343,6 @@ this.getAscensions = function() {
 }
 
 
-
-//////////////////////////////////////////////////////////////////////////
-
-  //modal section
-
-//////////////////////////////////////////////////////////////////////////
-// useless:
-  // $scope.toggleAboutModal = function() {
-  //     $scope.modalShown1 = !$scope.modalShown1;
-  //   };
-  //
-  // $scope.toggleClimberModal = function() {
-  //     $scope.modalShown2 = !$scope.modalShown2;
-  //   };
 
 
 
