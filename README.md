@@ -16,7 +16,7 @@ Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, P
 
 **Technologies Used:**
 
-Adobe XD, Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, Postman
+Adobe Illustrator, Ruby, Rails, Postgresql, JWT Auth, Angular, Bootstrap, HTML5, CSS, Javascript, Postman
 
 **Project Planning:**
 
