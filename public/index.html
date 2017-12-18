@@ -19,19 +19,12 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
     <!-- Angular  -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script> -->
-
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-
-
 
     <!-- 14eener Fever JScript -->
         <script type="text/javascript" src="app.js"></script>
 
-    <!--Stylesheets-->
-
-    <!-- Bootstrap -->
-
+    <!-- Bootstrap  & site specific Stylesheets -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
@@ -39,35 +32,27 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-
-
-
-
-        <!--14eener Fever Stylesheet-->
+    <!--14eener Fever Stylesheet-->
         <link rel="stylesheet" href="style.css">
 
   </head>
-  <body ng-controller="mtnController as ctrl">
 
-      <!-- {{ctrl.message}}
-      <h1>14eener Fever</h1> -->
+    <body ng-controller="mtnController as ctrl">
 
+      <!-- navbar -->
+      <section id="nav" ng-include="'./nav.html'"></section>
 
-  <!-- navbar -->
-  <section id="nav" ng-include="'./nav.html'"></section>
+          <!-- Background Image -->
+          <img class="main-img img-responsive" ng-if=!ctrl.loggedin src="./assets/pexels-photo-92658.jpeg"alt="14eener Fever"/>
 
-
-  <!-- Background Image -->
-  <img class="main-img img-responsive" ng-if=!ctrl.loggedin src="./assets/pexels-photo-92658.jpeg"alt="14eener Fever"/>
-
-<!-- <div class="container"> -->
-  <!-- <h1>You Have Climbed This Mountain</h1> -->
-  <!-- <p>Climber Logged In: {{ctrl.user.username}}</p> -->
-<!-- </div> -->
 
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
 <!--  modal section (about) -->
+
+<!-- /////////////////////////////////////////////////////////////////////// -->
+
+
 <div class="modal fade bd-about-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content data-spy="scroll"">
@@ -123,6 +108,12 @@
                                 <div class="card-body">
                                 <h4 class="card-title">{{ climbersIndex.name }}</h4>
                                 <p class="card-text">{{ climbersIndex.about }}</p>
+
+                                <!-- FOR CURRENT PROBLEM SOLVING ISSUES
+                                maybe try this as a an array in this way:????
+                                <p class="card-text">Climber Level: [{{ climbersIndex.level }}]</p>
+                                or array bracket inside curly bracket?
+                                 -->
                                 <p class="card-text">Climber Level: {{ climbersIndex.level }}</p>
                                 </div>
                                 <ul class="list-group list-group-flush">
@@ -152,10 +143,7 @@
 
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
-<!-- <div class="d-flex justify-content-center"> -->
-
 <section id="summits" >
-<!-- ng-click="ctrl.getSummit();" -->
   <div class="modal fade bd-summits-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content data-spy="scroll"">
@@ -170,7 +158,7 @@
               </div>
 
                                 <div class="card" style="width: 40rem;">
-                                   <!-- ng-click="ctrl.getSummit(summitIndex.id);"> -->
+
                                 <img class="card-img-top" src="{{ ctrl.currentSummit.img }}" alt="Summit Image">
                                 <div class="card-body">
                                 <h4 class="card-title">{{ ctrl.currentSummit.name }}</h4>
@@ -189,9 +177,7 @@
                                 <a href="#" class="card-link">Go to My Profile</a>
                                 </div>
                                 </div>
-                              <!-- </li>
 
-                        </ul> -->
 
                       </div>
                       </div>
@@ -210,8 +196,6 @@
 
 <section id="createUserProfile" >
 
-  <!-- need to figure out how to use a ng-hide to hide the climber's profile tab if a climber profile has already been created -->
-
   <div class="modal fade bd-user-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content data-spy="scroll"">
@@ -225,59 +209,53 @@
 
 <div class="modal-body">
 
-<form>
+                <form>
 
-  <div class="form-group">
-    <label for="climberProfileName">Climber Profile Name</label>
-    <input type="text" class="form-control" ng-model="ctrl.newClimberProfile.name" id="climberProfileName" placeholder="Climber Directory Profile Name">
-  </div>
+                  <div class="form-group">
+                    <label for="climberProfileName">Climber Profile Name</label>
+                    <input type="text" class="form-control" ng-model="ctrl.newClimberProfile.name" id="climberProfileName" placeholder="Climber Directory Profile Name">
+                  </div>
 
-  <!-- image input div -->
-  <div class="form-group">
-    <label for="climberProfilePic">Climber Profile Picture</label>
-    <input type="text" class="form-control" ng-model="ctrl.newClimberProfile.img" id="climberProfilePic" placeholder="Climber Profile Picture URL">
-  </div>
+                  <!-- image input div -->
+                  <div class="form-group">
+                    <label for="climberProfilePic">Climber Profile Picture</label>
+                    <input type="text" class="form-control" ng-model="ctrl.newClimberProfile.img" id="climberProfilePic" placeholder="Climber Profile Picture URL">
+                  </div>
 
-  <div class="form-group">
-    <label for="aboutClimberTextarea">About Me</label>
-    <!-- <input type="integer" class="form-control" ng-model="ctrl.newClimberProfile.about"> -->
-    <textarea class="form-control" ng-model="ctrl.newClimberProfile.about" id="aboutClimberTextarea" rows="3"></textarea>
-  </div>
+                  <div class="form-group">
+                    <label for="aboutClimberTextarea">About Me</label>
 
-<!-- used the following resource to try to save a selected level to db (still troubleshooting): -->
-<!-- https://docs.angularjs.org/api/ng/directive/select#using-ngvalue-to-bind-the-model-to-an-array-of-objects -->
-  <div class="form-group" ng-controller="SelectController">
-    <label for="climberLevelSelect">Climber Ability Level: </label>
-
-    <select size="5" name="climberLevelSelect" ng-model="data.climbers" multiple>
+                    <textarea class="form-control" ng-model="ctrl.newClimberProfile.about" id="aboutClimberTextarea" rows="3"></textarea>
+                  </div>
 
 
-       <!-- ng-model="ctrl.newClimberProfile.level"> -->
-      <!-- define what each of these levels means somewhere  -->
-      <option ng-repeat="option in data.ClimberProfileLevels" ng-value="option.value">{{option.name}}</option>
+                  <div class="form-group" ng-controller="SelectController">
+                    <label for="climberLevelSelect">Climber Ability Level: </label>
 
-      <hr>
-      <pre>model = {{data.climbers.level | json}}</pre><br/>
-    </select>
-  </div>
+                    <select size="5" name="climberLevelSelect" ng-model="data.climbers" multiple>
+                      <!-- define what each of these levels means somewhere  -->
+                      <option ng-repeat="option in data.ClimberProfileLevels" ng-value="option.value">{{option.name}}</option>
 
-  <div class="form-group">
-    <!-- need to have ng-directive that doesn't need click for summits to show (ng-show throws loop) -->
-    <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted</label>
-    <select multiple class="form-control" id="14eeners">
-      <!-- would the ng-model be ctrl.ascension.summit_id?? -->
-      <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.newClimberProfile.summit">{{summitIndex.name}}</option>
+                      <hr>
+                      <pre>model = {{data.climbers.level | json}}</pre><br/>
+                    </select>
+                  </div>
 
-    </select>
-  </div>
+                  <div class="form-group">
+                    <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted</label>
+                    <select multiple class="form-control" id="14eeners">
+                      <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.newClimberProfile.summit">{{summitIndex.name}}</option>
 
-</form>
+                    </select>
+                  </div>
+
+                </form>
 
 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!-- when submit is clicked the user needs to be taken to a user/climber profile modal?  so that multiple clicks do not create multiple "climbers"? like the modal that shows one summit-->
+
                 <button type="submit" ng-click="ctrl.createClimberProfile(newClimberProfile);" class="btn btn-primary">Save changes</button>
               </div>
             </div>
@@ -318,8 +296,7 @@
                 </li>
           </ul>
 
-<!-- seems like this should go in the a tag for the profileGlance above
-ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber" -->
+
 
 
 <div class="tab-content">
@@ -407,10 +384,10 @@ ng-click="ctrl.setCurrentClimber(climbersIndex.id)" ng-show="ctrl.currentClimber
                   </div>
 
                   <div class="form-group">
-                    <!-- need to have ng-directive that doesn't need click for summits to show (ng-show throws loop) -->
+
                     <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted:</label>
                     <select multiple class="form-control" id="14eeners">
-                      <!-- would the ng-model be ctrl.ascension.summit_id?? -->
+                      
                       <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.newClimberProfile.summit">{{summitIndex.name}}</option>
 
                     </select>
