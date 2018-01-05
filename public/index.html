@@ -85,7 +85,7 @@
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
 <!-- <div class="d-flex justify-content-center"> -->
-<section id="climbers" >
+<section id="climbers">
 <!-- ng-click="ctrl.showClimbers();" -->
   <div class="modal fade bd-climbers-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -185,8 +185,7 @@
                       </div>
 
 
-  </body>
-</html>
+
 
 <!-- /////////////////////////////////////////////////////////////////////// -->
 
@@ -387,7 +386,7 @@
 
                     <label for="14eenersClimbed" ng-click="ctrl.getSummits();">14eeners I've Summitted:</label>
                     <select multiple class="form-control" id="14eeners">
-                      
+
                       <option ng-repeat="summitIndex in ctrl.summitIndex track by $index" value="{{summitIndex}}" ng-click="ctrl.getSummit(summitIndex.id);" ng-show="ctrl.currentSummit" ng-model="ctrl.newClimberProfile.summit">{{summitIndex.name}}</option>
 
                     </select>
@@ -414,3 +413,8 @@
       </div>   <!--modal-dialog modal-lg-->
     </div> <!--profile modal-->
 </section>
+
+
+
+</body>
+</html>
